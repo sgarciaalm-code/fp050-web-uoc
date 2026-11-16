@@ -1,0 +1,12 @@
+# Archivos compilados
+servidor
+*.exe
+
+# Información sensible
+.env
+.env.*
+!.env.example
+*.pem
+
+# Configuración local
+.vscode/
