@@ -13,7 +13,7 @@ pipeline {
 
         stage('Preparar despliegue') {
             steps {
-                echo 'Pipeline inicial funcionando correctamente'
+                echo 'Pipeline actualizado automaticamente desde GitHub - UOC'
             }
         }
     }
