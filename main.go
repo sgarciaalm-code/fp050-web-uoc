@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"html/template"
 	"log"
 	"net/http"
@@ -40,6 +41,18 @@ func main() {
 	// Permitimos que Go sirva imágenes y otros archivos
 	fs := http.FileServer(http.Dir("static"))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
+
+	// Ruta para identificar qué pod de Kubernetes responde
+	http.HandleFunc("/pod", func(w http.ResponseWriter, r *http.Request) {
+		hostname, err := os.Hostname()
+		if err != nil {
+			http.Error(w, "Error al obtener el pod", http.StatusInternalServerError)
+			return
+		}
+
+		w.Header().Set("Content-Type", "text/plain")
+		fmt.Fprintf(w, "Hola desde el pod %s\n", hostname)
+	})
 
 	// Asociamos la página principal con nuestra función
 	http.HandleFunc("/", inicio)
