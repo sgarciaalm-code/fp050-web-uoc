@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: web-uoc
-          image: fp050-web-uoc:3
+          image: fp050-web-uoc:pod-v1
           imagePullPolicy: Never
           ports:
             - containerPort: 8080
