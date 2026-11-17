@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fp050-web-uoc
+spec:
+  type: LoadBalancer
+  selector:
+    app: fp050-web-uoc
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
